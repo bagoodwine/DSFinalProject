@@ -34,7 +34,17 @@ public:
 
   // hash function
 
-  // getter / setter methods 
+  // getter / setter methods
+
+  // friend opperator
+  friend std::ostream& operator<<( std::ostream& output, const Transaction& t ) {
+    output << "Reciever: " << t.reciever << std::endl;
+    output << "Sender: " << t.sender << std::endl;
+    output << "Ammount: " << t.ammount << std::endl;
+    output << "Date: " << t.month << "/" << t.day << "/" << t.year << std::endl;
+
+    return output; 
+  }
 
 };
 

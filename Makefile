@@ -17,6 +17,15 @@ OBJECTS := objects
 
 # commands here
 
+# make TransactionTest
+tObjs := $(OBJECTS)/TransactionTest.o
+
+TransactionTest: $(tObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/TransactionTest $(tObjs)
+	$(EXE)/./TransactionTest
+
+$(OBJECTS)/TransactionTest.o: $(PROG)/TransactionTest.cpp $(CLASSES)/Transaction.h
+	$(PP) $(CXXFLAGS) -c $(PROG)/TransactionTest.cpp -o $@
 
 # make initialize
 initialize:
