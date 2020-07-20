@@ -20,7 +20,7 @@ private:
   MerkleNode<T> *root;
 
   // private insert method caled by public insert method
-  void insert( MerkleNode<T>*& currPtr, const T& value, const int& t ) {
+  void insert( MerkleNode<T>*& currPtr, MerkleNode<T>*& prevPtr, const T& value, const int& t ) {
 
     // create new node with the value
     //MerkleNode<T> *newNode = new MerkleNode<T>( i );
@@ -29,17 +29,21 @@ private:
     // set the pointer to the new value
     if( currPtr == NULL ) {
       currPtr = new MerkleNode<T>(value, t );
+      // set the hash
+      if( prevPtr == NULL ) {
+        std::cout << std::endl;
+      }
       return;
     }
 
     // if the TIMESTAMP is less than the current data, recurse left
     else if( t < currPtr->timestamp ) {
-      insert( currPtr->left, value, t );
+      insert( currPtr->left, currPtr, value, t );
     }
 
     // if the TIMESTAMP is greater than the current data, recurse right
     else if( t > currPtr->timestamp ) {
-      insert( currPtr->right, value, t );
+      insert( currPtr->right, currPtr, value, t );
     }
     else {
       std::cout << "Something went wrong..." << std::endl;
@@ -61,7 +65,8 @@ public:
   void insert( const T& value, const int& t ) {
     // value = the transaction
     // t = the timestamp
-    insert( root, value, t );
+    MerkleNode<T> *prev = NULL;
+    insert( root, prev, value, t );
   }
 
   void printInOrder( std::ostream& output, const MerkleNode<T>* currNode ) const {
@@ -73,13 +78,13 @@ public:
 
     // recursivly call left child
     printInOrder( output, currNode->left );
-    output << currNode->value << " ";
+    output << currNode->value << "At timestamp = " << currNode->timestamp << std::endl;
     // recursvily call right child
     printInOrder( output, currNode->right );
   }
 
   friend std::ostream& operator<<( std::ostream& output, const MerkleTree<T>& theTree) {
-    output << "In order: ";
+    output << "Transactions in order: ";
     theTree.printInOrder( output, theTree.root );
     return output;
   }
