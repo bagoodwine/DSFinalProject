@@ -8,7 +8,9 @@
 PP := g++
 
 FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror
-CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
+#CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
+CXXFLAGS := -m64 -std=c++11 $(FLAGS)
+
 
 CLASSES := classes
 PROG := programs
@@ -26,6 +28,18 @@ TransactionTest: $(tObjs)
 
 $(OBJECTS)/TransactionTest.o: $(PROG)/TransactionTest.cpp $(CLASSES)/Transaction.h
 	$(PP) $(CXXFLAGS) -c $(PROG)/TransactionTest.cpp -o $@
+
+# make MerkleTest
+mObjs := $(OBJECTS)/MerkleTest.o
+
+MerkleTest: $(mObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/MerkleTest $(mObjs)
+	$(EXE)/./MerkleTest
+
+$(OBJECTS)/MerkleTest.o: $(PROG)/MerkleTest.cpp $(CLASSES)/MerkleNode.h $(CLASSES)/MerkleTree.h
+	$(PP) $(CXXFLAGS) -c $(PROG)/MerkleTest.cpp -o $@
+
+
 
 # make initialize
 initialize:

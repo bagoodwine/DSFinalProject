@@ -8,42 +8,59 @@
 
 #include<iostream>
 #include<cstdlib>
+#include<string>
+#include<iomanip>
+#include<vector>
 // include SHA-256 here as well?
 
 class Transaction{
 
 private:
-  std::string reciever;
+  std::string receiver;
   std::string sender;
-  double ammount;
-  int day;
-  int month;
-  int year;
+  std::string amount;
+  std::string date;
+
 
 public:
   // default constructor
-  Transaction() : reciever(" "), sender(" "), ammount(0), day(-1), month(-1), year(-1) {}
+  Transaction() : receiver(" "), sender(" "), amount("$0.00"), date("-1/-1/-1") {}
 
   // overloaded constructor
-  Transaction( std::string r, std::string s, double a, int d, int m, int y ) : reciever(r), sender(s), ammount(a), day(d), month(m), year(y) {}
+  Transaction( std::string r, std::string s, std::string a, std::string d ) : receiver(r), sender(s), amount(a), date(d) {}
 
   // copy constructor
-  Transaction( const Transaction& copy ) : reciever(copy.reciever), sender(copy.sender), ammount(copy.ammount), day(copy.day), month(copy.month), year(copy.year) {}
+  Transaction( const Transaction& copy ) : receiver(copy.receiver), sender(copy.sender), amount(copy.amount), date(copy.date) {}
 
   // function that returns the information as a string
+  std::string getString (){
+      std::string result;
+      std::string str1 = "Receiver: ";
+      result.append(str1);
+      result.append(this->receiver);
+      std::string str2 = "\nSender: ";
+      result.append(str2);
+      result.append(this->sender);
+      std::string str3 = "\nAmount: ";
+      result.append(str3);
+      result.append(this->amount);
+      std::string str4 = "\nDate: ";
+      result.append(str4);
+      result.append(this->date);
+      return result;
+  }
 
-  // hash function
 
   // getter / setter methods
 
   // friend opperator
   friend std::ostream& operator<<( std::ostream& output, const Transaction& t ) {
-    output << "Reciever: " << t.reciever << std::endl;
+    output << "Receiver: " << t.receiver << std::endl;
     output << "Sender: " << t.sender << std::endl;
-    output << "Ammount: " << t.ammount << std::endl;
-    output << "Date: " << t.month << "/" << t.day << "/" << t.year << std::endl;
+    output << "Amount: " << t.amount << std::endl;
+    output << "Date: " << t.date << std::endl;
 
-    return output; 
+    return output;
   }
 
 };
