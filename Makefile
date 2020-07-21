@@ -29,6 +29,20 @@ TransactionTest: $(tObjs)
 $(OBJECTS)/TransactionTest.o: $(PROG)/TransactionTest.cpp $(CLASSES)/Transaction.h
 	$(PP) $(CXXFLAGS) -c $(PROG)/TransactionTest.cpp -o $@
 
+# make hashTest
+hObjs := $(OBJECTS)/hashTest.o
+
+hashTest: $(hObjs)
+	$(PP) $(CXXFLAGS) -o $(EXE)/hashTest $(hObjs)
+	$(EXE)/./hashTest
+
+$(OBJECTS)/hashTest.o: $(PROG)/hashTest.cpp $(CLASSES)/hash.h
+	$(PP) $(CXXFLAGS) -c $(PROG)/hashTest.cpp -o $@
+
+
+
+
+
 # make MerkleTest
 mObjs := $(OBJECTS)/MerkleTest.o
 
