@@ -35,23 +35,15 @@ public:
   // function that returns the information as a string
   std::string getString (){
       std::string result;
-      std::string str1 = "Receiver: ";
-      result.append(str1);
       result.append(this->receiver);
-      std::string str2 = "\nSender: ";
-      result.append(str2);
+      result += ' ';
       result.append(this->sender);
-      std::string str3 = "\nAmount: ";
-      result.append(str3);
+      result += ' ';
       result.append(this->amount);
-      std::string str4 = "\nDate: ";
-      result.append(str4);
+      result += ' ';
       result.append(this->date);
       return result;
   }
-
-
-  // getter / setter methods
 
   // friend opperator
   friend std::ostream& operator<<( std::ostream& output, const Transaction& t ) {

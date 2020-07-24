@@ -4,7 +4,7 @@ int main(){
     std::cout << "----- Test 1 -----" << std::endl;
     std::string message = " ";
     std::cout << "Initial input string: " << message << std::endl;
-    /* / 
+    /*
     std::vector<unsigned long> block;
     block = convert_to_binary(message);
     block = pad_to_512bits(block);
@@ -27,7 +27,7 @@ int main(){
     std::cout << "SHA-256 Hashed string: " << q << std::endl << std::endl;
 
     std::cout << "----- Test 4 -----" << std::endl;
-    std::string x = "Receiver: Obi-Wan Kenobi! Sender: Luke Skywalker Amount: $44.56 Date: 5/4/2020";
+    std::string x = "Obi-Wan Kenobi! Luke Skywalker $44.56 5/4/2020";
     std::cout << "Initial input string: " << x << std::endl;
     std::string y = hash(x);
     std::cout << "SHA-256 Hashed string: " << y << std::endl << std::endl;
