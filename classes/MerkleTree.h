@@ -97,16 +97,16 @@ public:
 
     // recursivly call left child
     printInOrder( output, currNode->left );
-    output << "Transaction: " << std::endl;
+    //output << "Transaction: " << std::endl;
     output << currNode->value << "At timestamp = " << currNode->timestamp << std::endl;
     output << "Left hash = " << currNode->hashLeft << std::endl;
-    output << "Right hash = " << currNode->hashRight << std::endl;
+    output << "Right hash = " << currNode->hashRight << std::endl <<std::endl;
     // recursvily call right child
     printInOrder( output, currNode->right );
   }
 
   friend std::ostream& operator<<( std::ostream& output, const MerkleTree<T>& theTree) {
-    output << "Transactions in order: ";
+    //output << "Transactions in order: ";
     theTree.printInOrder( output, theTree.root );
     return output;
   }

@@ -19,14 +19,20 @@ int main() {
   Transaction u("Leia Organa", "Han Solo", "$102.38", "06/20/2020" ); // third
   Transaction v("Anakin Skywalker", "Padme Amadala", "$12.57", "09/12/2017" ); // second
   Transaction w("Ashoka Tano", "Mace Windu", "$5.99", "12/01/2013" ); // first
-  std::cout << "Hello :)" << std::endl;
-  MerkleTree<Transaction> TransactionTree;
+  Transaction x("Obi-Wan Kenobi", "Luke Skywalker", "$87.55", "03/23/2019"); // inserted
 
+  MerkleTree<Transaction> TransactionTree;
+  std::cout << "Transaction tree before addition: " << std::endl;
   TransactionTree.insert( t, t.getDate() );
   TransactionTree.insert( u, u.getDate() );
   TransactionTree.insert( v, v.getDate() );
   TransactionTree.insert( w, w.getDate() );
   std::cout << TransactionTree << std::endl;
+
+  std::cout << "Transaction tree after addition: " << std::endl <<std::endl;
+  TransactionTree.insert( x, x.getDate() );
+  std::cout << TransactionTree << std::endl;
+
 
 
 
