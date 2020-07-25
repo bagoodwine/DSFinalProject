@@ -50,7 +50,7 @@ MerkleTest: $(mObjs)
 	$(PP) $(CXXFLAGS) -o $(EXE)/MerkleTest $(mObjs)
 	$(EXE)/./MerkleTest
 
-$(OBJECTS)/MerkleTest.o: $(PROG)/MerkleTest.cpp $(CLASSES)/MerkleNode.h $(CLASSES)/MerkleTree.h
+$(OBJECTS)/MerkleTest.o: $(PROG)/MerkleTest.cpp $(CLASSES)/Transaction.h $(CLASSES)/hash.h $(CLASSES)/MerkleNode.h $(CLASSES)/MerkleTree.h
 	$(PP) $(CXXFLAGS) -c $(PROG)/MerkleTest.cpp -o $@
 
 
