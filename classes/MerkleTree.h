@@ -64,7 +64,7 @@ private:
       insert( currPtr->right, currPtr, value, t, temp );
     }
     else {
-      std::cout << "Something went wrong..." << std::endl;
+      //std::cout << "Something went wrong..." << std::endl;
     }
   }
 

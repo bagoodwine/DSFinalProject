@@ -72,11 +72,11 @@ public:
       dates += datestring[i];
     }
     // then month
-    for( int i = 2; i <= 3; i++ ) {
+    for( int i = 0; i <= 1; i++ ) {
       dates += datestring[i];
     }
     // then day
-    for( int i = 0; i <= 1; i++ ) {
+    for( int i = 2; i <= 3; i++ ) {
       dates += datestring[i];
     }
     // cast to an int
