@@ -12,7 +12,7 @@
 template<class T>
 struct MerkleNode {
 
-  // data
+  // members
   T value; // data -> i.e. the transaction class object
   MerkleNode<T>* left, *right;
   std::string hashLeft;
@@ -26,6 +26,7 @@ struct MerkleNode {
   MerkleNode<T>(T valueIn, int tIn ) : value(valueIn), left(NULL), right(NULL), hashLeft(" "), hashRight(" "), timestamp(tIn) {}
 
 
+  // friend opperator
   friend std::ostream& operator<<( std::ostream& output, const MerkleNode<T>& theNode) {
     output << "The Merkle Node: ";
     output << theNode.value;

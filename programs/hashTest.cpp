@@ -1,3 +1,8 @@
+// Authors: Bridget Goodwine & Hanjing Zhu
+// Emails: bgoodwin@nd.edu & hzhu7@nd.edu
+//
+// test for the hash header file for the data structures final project on blockchain
+
 #include "../classes/hash.h"
 
 int main(){

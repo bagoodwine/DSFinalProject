@@ -21,11 +21,10 @@ private:
   MerkleNode<T> *root;
 
   // private insert method caled by public insert method
-  void insert( MerkleNode<T>*& currPtr, MerkleNode<T>* prevPtr, T& value, const int& t, char& side ) { // removed const before T to be able to preform getString func
+  void insert( MerkleNode<T>*& currPtr, MerkleNode<T>* prevPtr, T& value, const int& t, char& side ) {
 
+    // temp char to represent the side you are going down
     char temp = 'x';
-    // create new node with the value
-    //MerkleNode<T> *newNode = new MerkleNode<T>( i );
 
     // if curr pointer is null, this is the location
     // set the pointer to the new value
@@ -63,9 +62,6 @@ private:
       temp = 'r';
       insert( currPtr->right, currPtr, value, t, temp );
     }
-    else {
-      //std::cout << "Something went wrong..." << std::endl;
-    }
   }
 
 public:
@@ -80,14 +76,17 @@ public:
   }
 
   // public insert method calls the private one
-  void insert( T& value, const int& t ) { // removed const from T
+  void insert( T& value, const int& t ) {
     // value = the transaction
     // t = the timestamp
+    // side = the side you will go down
+    // root and prev = currPtr and prevPtr
     char side = 'l';
     MerkleNode<T>* prev = NULL;
     insert( root, prev, value, t, side );
   }
 
+  // printing algorithm, prints in chronological order
   void printInOrder( std::ostream& output, const MerkleNode<T>* currNode ) const {
 
     // return if currNode = NULL
@@ -97,14 +96,16 @@ public:
 
     // recursivly call left child
     printInOrder( output, currNode->left );
-    //output << "Transaction: " << std::endl;
+
     output << currNode->value << "At timestamp = " << currNode->timestamp << std::endl;
     output << "Left hash = " << currNode->hashLeft << std::endl;
     output << "Right hash = " << currNode->hashRight << std::endl <<std::endl;
+
     // recursvily call right child
     printInOrder( output, currNode->right );
   }
 
+  // friend opperator 
   friend std::ostream& operator<<( std::ostream& output, const MerkleTree<T>& theTree) {
     //output << "Transactions in order: ";
     theTree.printInOrder( output, theTree.root );

@@ -44,6 +44,7 @@ public:
       return result;
   }
 
+  // function that returns the date as an integer
   int getDate() {
     // string minipulation syntax sources
     // http://www.cplusplus.com/reference/string/string/operator[]/
@@ -57,15 +58,6 @@ public:
         datestring += date[i];
       }
     }
-
-    // integer date explination: we want the transactions to be
-    // inserted in chronological order, so we are turning the
-    // date into an int represented as year-month-day so that the
-    // earliest transactions are printed first.
-    // therefore you MUST add dates with an 0 in front of 1 like 01
-    // first two spots = month 0, 1
-    // second two spots = day 2, 3
-    // third fourth spots = year 4, 5, 6
 
     // add year first
     for( int i = 4; i <= 7; i++ ) {

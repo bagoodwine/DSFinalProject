@@ -8,8 +8,8 @@
 PP := g++
 
 FLAGS := -O0 -g -Wall -Wextra -Wconversion -Wshadow -pedantic -Werror
-#CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
-CXXFLAGS := -m64 -std=c++11 $(FLAGS)
+CXXFLAGS := -m64 -std=c++11 -Weffc++ $(FLAGS)
+#CXXFLAGS := -m64 -std=c++11 $(FLAGS)
 
 
 CLASSES := classes
@@ -60,7 +60,7 @@ initialize:
 	mkdir objects executables
 
 # make all
-all:
+all: hashTest TransactionTest MerkleTest
 
 # make clean
 clean:

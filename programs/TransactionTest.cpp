@@ -11,11 +11,11 @@
 int main() {
   std::cout << "Testing transaction class... " << std::endl << std::endl;
 
-  Transaction t("Obi-Wan Kenobi", "Yoda", "$44.52", "07/18/2020" ); // fourth
-  Transaction u("Leia Organa", "Han Solo", "$102.38", "06/20/2020" ); // third
-  Transaction v("Anakin Skywalker", "Padme Amadala", "$12.57", "09/12/2017" ); // second
-  Transaction w("Ashoka Tano", "Mace Windu", "$5.99", "12/01/2013" ); // first
-  Transaction x("Obi-Wan Kenobi", "Luke Skywalker", "$87.55", "03/23/2019"); // inserted
+  Transaction t("Obi-Wan Kenobi", "Yoda", "$44.52", "07/18/2020" );
+  Transaction u("Leia Organa", "Han Solo", "$102.38", "06/20/2020" );
+  Transaction v("Anakin Skywalker", "Padme Amadala", "$12.57", "09/12/2017" );
+  Transaction w("Ashoka Tano", "Mace Windu", "$5.99", "12/01/2013" );
+  Transaction x("Obi-Wan Kenobi", "Luke Skywalker", "$87.55", "03/23/2019");
 
   std::cout << "Transaction 1: " << std::endl;
   std::string tString = t.getString();
