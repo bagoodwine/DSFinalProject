@@ -23,33 +23,28 @@ private:
   // private insert method caled by public insert method
   void insert( MerkleNode<T>*& currPtr, MerkleNode<T>* prevPtr, T& value, const int& t, char& side ) { // removed const before T to be able to preform getString func
 
+    char temp = 'x';
     // create new node with the value
     //MerkleNode<T> *newNode = new MerkleNode<T>( i );
 
     // if curr pointer is null, this is the location
     // set the pointer to the new value
-    char temp = 'x';
     if( currPtr == NULL ) {
       currPtr = new MerkleNode<T>(value, t );
       std::string tString = value.getString();
       tString = hash(tString);
-      //std::cout << tString << std::endl;
 
       if( side == 'r' ) {
+        // if right child, add right hash
         if( prevPtr != NULL ) {
-        //  std::cout << "Right child" << std::endl;
           prevPtr->hashRight = tString;
         }
       }
       else if( side == 'l' ){
+        // if left child, add left hash
         if( prevPtr != NULL ) {
-        //  std::cout << "Left child" << std::endl;
           prevPtr->hashLeft = tString;
         }
-        else {
-          //std::cout << "Left child BUT root" << std::endl;
-        }
-
       }
       if( prevPtr == NULL ) {
         std::cout << std::endl;
@@ -59,15 +54,13 @@ private:
 
     // if the TIMESTAMP is less than the current data, recurse left
     else if( t < currPtr->timestamp ) {
-      temp = 'l';
-      //std::cout << "Prev ptr = " << prevPtr << std::endl;
+      temp = 'l'; // needed to keep track of the side we are on
       insert( currPtr->left, currPtr, value, t, temp );
     }
 
     // if the TIMESTAMP is greater than the current data, recurse right
     else if( t > currPtr->timestamp ) {
       temp = 'r';
-      //std::cout << "Prev ptr = " << prevPtr << std::endl;
       insert( currPtr->right, currPtr, value, t, temp );
     }
     else {

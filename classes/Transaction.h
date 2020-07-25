@@ -11,7 +11,6 @@
 #include<string>
 #include<iomanip>
 #include<vector>
-// include SHA-256 here as well?
 
 class Transaction{
 
@@ -48,7 +47,8 @@ public:
   int getDate() {
     // string minipulation syntax sources
     // http://www.cplusplus.com/reference/string/string/operator[]/
-    //
+    // https://en.cppreference.com/w/cpp/string/basic_string/stol
+
     std::string datestring;
     std::string dates;
     for( unsigned int i = 0; i < date.length(); i++ ) {
@@ -57,10 +57,15 @@ public:
         datestring += date[i];
       }
     }
+
+    // integer date explination: we want the transactions to be
+    // inserted in chronological order, so we are turning the
+    // date into an int represented as year-month-day so that the
+    // earliest transactions are printed first.
+    // therefore you MUST add dates with an 0 in front of 1 like 01
     // first two spots = month 0, 1
     // second two spots = day 2, 3
     // third fourth spots = year 4, 5, 6
-    // year-month-day
 
     // add year first
     for( int i = 4; i <= 7; i++ ) {
@@ -74,10 +79,8 @@ public:
     for( int i = 0; i <= 1; i++ ) {
       dates += datestring[i];
     }
-    //std::cout << "IN TRANSACTION CLASS: string = " << dates << std::endl;
+    // cast to an int
     int d = std::stoi(dates);
-    //int d = std::atoi(dates);
-    //std::cout << "IN TRANSACTION CLASS: int = " << d << std::endl;
     return d;
   }
 

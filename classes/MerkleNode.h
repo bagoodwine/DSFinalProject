@@ -25,22 +25,12 @@ struct MerkleNode {
   // overloaded constructor
   MerkleNode<T>(T valueIn, int tIn ) : value(valueIn), left(NULL), right(NULL), hashLeft(" "), hashRight(" "), timestamp(tIn) {}
 
-  void setRight( std::string r ) {
-    hashRight = r; 
-  }
-
-  void setLeft( std::string r ) {
-    hashLeft = r;
-  }
 
   friend std::ostream& operator<<( std::ostream& output, const MerkleNode<T>& theNode) {
     output << "The Merkle Node: ";
-    //theTree.printInOrder( output, theTree.root );
     output << theNode.value;
     output << "Hash left = " << theNode.hashLeft << std::endl;
     output << "Hash right = " << theNode.hashRight << std::endl;
-    //output << "Pointer left = " << left << std::endl;
-    //output << "Pointer right = " << right << std::endl;
     output << "Timestamp = " << theNode.timestamp << std::endl;
     return output;
   }
